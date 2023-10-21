@@ -1,19 +1,31 @@
-
-
 export interface NFTToken {
-    token_class_name: string
-    token_class_image: string
-    token_class_description: string
-    token_class_total: number
-    token_id: number
+  token_class_name: string
+  token_class_image: string
+  token_class_description: string
+  token_class_total: number
+  token_id: number
 }
 
 export interface HolderInfo {
-    address: string
-    token_count: number
+  address: string
+  token_count: number
 }
 
 export interface NFT {
-    holder_info: HolderInfo
-    token_list: NFTToken
+  holder_info: HolderInfo
+  token_list: NFTToken
+}
+
+export interface NFTDetail {
+  name: string
+  description: string
+  renderer: string
+  issuer_info: {
+    name: string
+    uuid: string
+    avatar_url: string
+  }
+
+  total: number
+  issued: number
 }

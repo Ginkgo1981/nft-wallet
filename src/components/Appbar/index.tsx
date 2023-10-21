@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import { NFTToken } from "../../models";
-import React from "react";
-import { useHistory } from "react-router-dom";
+import styled from 'styled-components'
+import React from 'react'
+import { useHistory } from 'react-router-dom'
 import { ReactComponent as AccountSvg } from '../../assets/svg/account.svg'
-import { RoutePath } from "../../routes";
+import { RoutePath } from '../../routes'
 
-export interface AppBarProps {
+export interface AppbarProps {
   title: string
   left?: React.ReactNode
   right?: React.ReactNode
+  back?: boolean
 }
 const Header = styled.header`
   position: sticky;
@@ -33,28 +33,25 @@ const Header = styled.header`
   }
 `
 
-export const AppBar: React.FC<AppBarProps> = ({
-  title,
-  left,
-  right
-}) => {
+// eslint-disable-next-line prettier/prettier
+export const Appbar: React.ForwardRefExoticComponent<AppbarProps & React.RefAttributes<HTMLElement>
+> = React.forwardRef(
+  ({ title, left = null, right }, ref: React.ForwardedRef<HTMLElement>) => {
     const history = useHistory()
-  return (
-
-<Header>
-      <span className="left">{left}</span>
-      <span className="title">{title}</span>
-      <span className="right">
-        {right ?? (
-          <AccountSvg
-            onClick={() => {
-              history.push(RoutePath.Account)
-            }}
-          />
-        )}
-      </span>
-    </Header>
-  )
-}
-
-
+    return (
+      <Header ref={ref}>
+        <span className="left">{left}</span>
+        <span className="title">{title}</span>
+        <span className="right">
+          {right ?? (
+            <AccountSvg
+              onClick={() => {
+                history.push(RoutePath.Account)
+              }}
+            />
+          )}
+        </span>
+      </Header>
+    )
+  }
+)
