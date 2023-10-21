@@ -11,9 +11,8 @@ import { LazyLoadImage } from '../../components/Image'
 import { Button } from '../../components/Button'
 import { Copyzone } from '../../components/Copyzone'
 
-
 const DialogContainer = styled(Dialog)`
-    display: flex;
+  display: flex;
   justify-content: center;
   align-items: center;
   .title {
@@ -76,11 +75,9 @@ const Container = styled.main`
   }
 `
 
-const useStyles = makeStyles(() => (
-  {
-    paper: {minWidth: '320px', maxWidth: '320px'}
-  }
-))
+const useStyles = makeStyles(() => ({
+  paper: { minWidth: '320px', maxWidth: '320px' },
+}))
 
 export const NFT: React.FC = () => {
   const history = useHistory()
@@ -94,7 +91,7 @@ export const NFT: React.FC = () => {
   const width = useWidth(appRef)
 
   const imageWidth = useMemo(() => {
-    return width != undefined ? width - 72 : 0
+    return width !== undefined ? width - 72 : 0
   }, [width])
 
   const detail = nftDetail
@@ -103,18 +100,16 @@ export const NFT: React.FC = () => {
     history.push(`/transfer/${detail.issuer_info.uuid}`)
   }, [history, detail])
 
-
   return (
-  <Container>
-
-    <Appbar
-      title='Token Detail'
-      left={<BackSvg onClick={() => history.goBack()} />}
-      right={<ShareSvg onClick={openDialog} />}
-      ref={appRef}
+    <Container>
+      <Appbar
+        title="Token Detail"
+        left={<BackSvg onClick={() => history.goBack()} />}
+        right={<ShareSvg onClick={openDialog} />}
+        ref={appRef}
       />
 
-      <div className='figure'>
+      <div className="figure">
         <LazyLoadImage
           src={detail.issuer_info.avatar_url}
           width={imageWidth}
@@ -140,19 +135,15 @@ export const NFT: React.FC = () => {
 
       <DialogContainer
         open={isDialogOpen}
-        classes={{paper: style.paper}}
+        classes={{ paper: style.paper }}
         onBackdropClick={closeDialog}
-        >
-
-<div className="title">点击复制链接并分享至社交媒体</div>
+      >
+        <div className="title">点击复制链接并分享至社交媒体</div>
         <Copyzone text={url} displayText={url} />
         <div className="action">
           <Button onClick={closeDialog}>关闭</Button>
         </div>
-
-        </DialogContainer>
-      
-
-  </Container>)
+      </DialogContainer>
+    </Container>
+  )
 }
-

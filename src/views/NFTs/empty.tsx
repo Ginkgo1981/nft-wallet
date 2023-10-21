@@ -1,4 +1,3 @@
-
 import styled from 'styled-components'
 import { ReactComponent as EmptySvg } from '../../assets/svg/empty.svg'
 import React from 'react'
@@ -26,11 +25,11 @@ const Container = styled.div`
 `
 
 export const Empty: React.FC = () => {
-    return (
-        <Container>
-            <EmptySvg />
-            <div className="desc">啊喔...您尚未拥有任何秘宝</div>
-            <a className="link">快去探索秘宝的广阔宇宙</a>
-        </Container>
-    )
+  return (
+    <Container>
+      <EmptySvg />
+      <div className="desc">啊喔...您尚未拥有任何秘宝</div>
+      <a className="link">快去探索秘宝的广阔宇宙</a>
+    </Container>
+  )
 }

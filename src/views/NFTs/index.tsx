@@ -15,13 +15,11 @@ export const NFTs: React.FC = () => {
   console.log(nfts)
   return (
     <Container>
-      <Appbar title='My Tokens' />
+      <Appbar title="My Tokens" />
       <Empty />
-      {
-        nfts.map((nft) => (
-          <Card token={nft} key={nft.token_id} />
-        ))
-      }
+      {nfts.map((nft) => (
+        <Card token={nft} key={nft.token_id} />
+      ))}
     </Container>
   )
 }

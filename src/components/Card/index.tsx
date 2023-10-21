@@ -1,14 +1,14 @@
-import styled from "styled-components";
-import { NFTToken } from "../../models";
-import React from "react";
-import { LazyLoadImage } from "../Image";
+import styled from 'styled-components'
+import { NFTToken } from '../../models'
+import React from 'react'
+import { LazyLoadImage } from '../Image'
 
 export interface CardProps {
-    token: NFTToken
+  token: NFTToken
 }
 
 const Container = styled.div`
-display: flex;
+  display: flex;
   margin-top: 16px;
   margin-left: 16px;
   margin-right: 16px;
@@ -48,24 +48,22 @@ display: flex;
   }
 `
 
-export const Card: React.FC<CardProps> = (({ token}) => {
-  console.log(">>>>> %o", token)
-    return (
-        <Container>
-            <div className="media">
-                <LazyLoadImage src={token.token_class_image} width={120} height={120} />
-            </div>
-            <div className="content">
-                <div className="title"> {token.token_class_name}</div>
-                <div className="desc"> {token.token_class_description} </div>
-                <div className="limit"> 
-                    {
-                        token.token_class_total === 0 
-                            ? 'No limit'
-                            : `Limit: ${token.token_class_total}`
-                    }
-                </div>
-            </div>
-        </Container>
-    )
-})
+export const Card: React.FC<CardProps> = ({ token }) => {
+  console.log('>>>>> %o', token)
+  return (
+    <Container>
+      <div className="media">
+        <LazyLoadImage src={token.token_class_image} width={120} height={120} />
+      </div>
+      <div className="content">
+        <div className="title"> {token.token_class_name}</div>
+        <div className="desc"> {token.token_class_description} </div>
+        <div className="limit">
+          {token.token_class_total === 0
+            ? 'No limit'
+            : `Limit: ${token.token_class_total}`}
+        </div>
+      </div>
+    </Container>
+  )
+}
