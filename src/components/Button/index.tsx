@@ -4,7 +4,7 @@ import styled from 'styled-components'
 export interface ButtonProps {
   type?: 'default' | 'primary'
   onClick?: () => void
-  disbaled?: boolean
+  disabled?: boolean
 }
 
 export const ButtonContainer = styled.button`
@@ -31,13 +31,13 @@ export const Button: React.FC<ButtonProps> = (props) => {
   if (props.type === 'primary') {
     bgColor = 'rgba(251, 207, 164, 0.5)'
   }
-  if (props.disbaled === true) {
+  if (props.disabled === true) {
     bgColor = '#ccc'
   }
   return (
     <ButtonContainer
-      disabled={props.disbaled}
-      onClick={props?.disbaled === true ? undefined : props.onClick}
+      disabled={props.disabled}
+      onClick={props?.disabled === true ? undefined : props.onClick}
       style={{ background: bgColor }}
     >
       {props.children}

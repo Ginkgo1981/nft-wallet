@@ -97,7 +97,9 @@ export const NFT: React.FC = () => {
   const detail = nftDetail
 
   const transfer = useCallback(() => {
-    history.push(`/transfer/${detail.issuer_info.uuid}`)
+    history.push(`/transfer/${detail.issuer_info.uuid}`, {
+      nftDetail: detail,
+    })
   }, [history, detail])
 
   return (

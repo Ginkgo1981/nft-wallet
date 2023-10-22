@@ -1,11 +1,5 @@
 import React from 'react'
-import {
-  BrowserRouter,
-  Redirect,
-  Route,
-  RouteProps,
-  Switch,
-} from 'react-router-dom'
+import { BrowserRouter, Route, RouteProps, Switch } from 'react-router-dom'
 import { Account } from '../views/Account'
 import { Login } from '../views/Login'
 import { NFT } from '../views/NFT'
