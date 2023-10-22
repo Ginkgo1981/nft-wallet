@@ -11,6 +11,9 @@ import { CircularProgress, Drawer } from '@material-ui/core'
 import { LazyLoadImage } from '../../components/Image'
 import { RoutePath } from '../../routes'
 import { sleep } from '../../utils'
+import { ActionDialog } from '../../components/ActionDialog'
+import { ReactComponent as SuccessSvg } from '../../assets/svg/success.svg'
+import { ReactComponent as FailSvg } from '../../assets/svg/fail.svg'
 
 const Container = styled.main`
   display: flex;
@@ -145,6 +148,8 @@ export const Transfer: React.FC = () => {
   const [ckbAddress, setCkbAddress] = useState('')
   const [isSendingNFT, setIsSendingNFT] = useState(false)
   const [isAddressValid, setIsAddressValid] = useState(false)
+  const [isSendDialSuccess, setIsSendDialogSuccess] = useState(false)
+  const [isSendDialogFail, setIsSendDialogFail] = useState(false)
 
   const textAreaOnChange = useCallback(
     (e: React.ChangeEvent<HTMLTextAreaElement>) => {
@@ -163,6 +168,8 @@ export const Transfer: React.FC = () => {
     setIsSendingNFT(true)
     await sleep(5000)
     setIsSendingNFT(false)
+    setIsDrawerOpen(false)
+    setIsSendDialogSuccess(true)
   }, [])
 
   const closeDrawer = (): void => setIsDrawerOpen(false)
@@ -211,6 +218,21 @@ export const Transfer: React.FC = () => {
           <p>一旦转让，将无法撤回</p>
         </div>
       </div>
+
+      <ActionDialog
+        icon={<SuccessSvg />}
+        open={isSendDialSuccess}
+        content={'Transaction Submitted'}
+        onConfirm={() => setIsSendDialogSuccess(false)}
+      />
+
+      <ActionDialog
+        icon={<FailSvg />}
+        open={isSendDialogFail}
+        content={'Transaction Failed'}
+        onConfirm={() => setIsSendDialogFail(false)}
+      />
+
       <Drawer
         anchor="bottom"
         open={isDrawerOpen}
