@@ -30,3 +30,8 @@ export interface NFTDetail {
   total: number
   issued: number
 }
+
+export interface ListMeta {
+  current_page: number
+  token_count: number
+}

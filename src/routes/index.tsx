@@ -14,6 +14,8 @@ export enum RoutePath {
   NFTs = '/nfts',
   NotFound = '/404',
   Transfer = '/transfer/:id',
+  Info = '/account/info',
+  Transactions = '/account/tx',
 }
 
 const routes: Array<RouteProps & { key: string }> = [
@@ -25,7 +27,7 @@ const routes: Array<RouteProps & { key: string }> = [
   },
   {
     component: Account,
-    exact: true,
+    exact: false,
     key: Account.name,
     path: RoutePath.Account,
   },
