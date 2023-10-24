@@ -7,13 +7,8 @@ export interface NFTToken {
   token_id: number
 }
 
-export interface NFTMeta {
-  current_page: string
-  token_count: number
-}
-
 export interface NFT {
-  holder_info: NFTMeta
+  holder_info: ListMeta
   token_list: NFTToken
 }
 

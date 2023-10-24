@@ -1,0 +1,2 @@
+export const MOCK_ADDRESS =
+  'ckt1q3vvtay34wndv9nckl8hah6fzzcltcqwcrx79apwp2a5lkd07fdxxu49tfd4y5gv8nn5hdc6jrwlmajtestrga6akjw'

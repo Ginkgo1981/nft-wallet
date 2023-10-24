@@ -12,6 +12,7 @@ export interface AppbarProps {
 }
 const Header = styled.header`
   position: sticky;
+  top: 0;
   display: flex;
   background: #fff;
   flex-direction: row;

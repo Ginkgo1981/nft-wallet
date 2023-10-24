@@ -12,7 +12,6 @@ const Container = styled.main`
   flex-direction: column;
 
   .detail {
-    height: 100%;
     display: flex;
     align-items: center;
     flex-direction: column;

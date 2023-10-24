@@ -1,5 +1,15 @@
 import { ListMeta } from './nft'
 
+export enum TransactionStatus {
+  Pending = 'pending',
+  Committed = 'commited',
+}
+
+export enum TransactionDirection {
+  Send = 'send',
+  Receive = 'receive',
+}
+
 export interface Tx {
   from_address: string
   to_address: string
@@ -8,17 +18,8 @@ export interface Tx {
   tx_state: TransactionStatus
   tx_direction: TransactionDirection
 }
-export enum TransactionStatus {
-  Pending = 'pending',
-  Committed = 'committed',
-}
-
-export enum TransactionDirection {
-  Send = 'send',
-  Receive = 'receive',
-}
 
 export interface Transaction {
   meta: ListMeta
-  transaction: Tx[]
+  transaction_list: Tx[]
 }
