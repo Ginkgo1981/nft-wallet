@@ -1,7 +1,10 @@
 import styled from 'styled-components'
-import React from 'react'
+import React, { useCallback, useState } from 'react'
 import { ReactComponent as LogoSvg } from '../../assets/svg/logo.svg'
-import { Button } from '@material-ui/core'
+import { useWalletModel } from '../../hooks/useWallet'
+import { useHistory } from 'react-router-dom'
+import { RoutePath } from '../../routes'
+import { Button } from '../../components/Button'
 
 const Container = styled.main`
   display: flex;
@@ -25,10 +28,23 @@ const Title = styled.h2`
 `
 
 export const Login: React.FC = () => {
+  const { login } = useWalletModel()
+  const history = useHistory()
+  const [isLogining, setIsLoging] = useState(false)
+  const loginBtnOnClick = useCallback(async () => {
+    setIsLoging(true)
+    await login()
+    setIsLoging(false)
+    history.push(RoutePath.NFTs)
+  }, [])
+
   return (
     <Container>
       <Title>Wallet</Title>
       <LogoSvg className="logo" />
+      <Button onClick={loginBtnOnClick} type="primary" disabled={isLogining}>
+        Login
+      </Button>
 
       <Button> Login</Button>
     </Container>
