@@ -36,17 +36,21 @@ export const Login: React.FC = () => {
     await login()
     setIsLoging(false)
     history.push(RoutePath.NFTs)
-  }, [])
+  }, [login, history])
 
   return (
     <Container>
       <Title>Wallet</Title>
       <LogoSvg className="logo" />
-      <Button onClick={loginBtnOnClick} type="primary" disabled={isLogining}>
-        Login
-      </Button>
 
-      <Button> Login</Button>
+      <Button
+        onClick={loginBtnOnClick}
+        type="primary"
+        disabled={isLogining}
+        isLoading={isLogining}
+      >
+        登录
+      </Button>
     </Container>
   )
 }

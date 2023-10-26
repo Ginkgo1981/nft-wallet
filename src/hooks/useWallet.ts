@@ -6,6 +6,7 @@ import { createModel } from 'hox'
 import UnipassProvider from '../pw/UnipassProvider'
 import PWCore, { IndexerCollector } from '@lay2/pw-core'
 import { INDEXER_URL, NODE_URL, UNIPASS_URL } from '../constants'
+import { unipassCache } from '../cache'
 
 export interface UseWallet {
   api: NFTWalletAPI
@@ -22,6 +23,11 @@ function useWallet(): UseWallet {
         new UnipassProvider(UNIPASS_URL),
         new IndexerCollector(INDEXER_URL)
       )
+      const p = PWCore.provider as UnipassProvider
+      unipassCache.setUnipassAddress(p.address.toCKBAddress())
+      // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
+      unipassCache.setUnipassEmail(p.email!)
+      setProvider(p)
     } catch (error) {
       //
     }

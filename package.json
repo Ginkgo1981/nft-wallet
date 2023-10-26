@@ -1,12 +1,12 @@
 {
-  "name": "nft-wallet",
+  "name": "wallet",
   "version": "0.0.1",
   "license": "MIT",
   "scripts": {
     "dev": "craco start",
     "build": "craco build",
     "start": "craco start",
-    "lint": "eslint src"
+    "lint": "eslint src --fix"
   },
   "dependencies": {
     "@lay2/pw-core": "0.4.0-alpha.6",
